@@ -1,1 +1,435 @@
+<!DOCTYPE html>
 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ Arrival Details — Late Night Editions: The Etruscans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–ink:       #1a1510;
+–parchment: #f0e8d8;
+–gold:      #b8912a;
+–gold-pale: #d4ae5c;
+–stone:     #7c6e5e;
+–cream:     #faf6ee;
+}
+
+body {
+background: var(–ink);
+color: var(–parchment);
+font-family: ‘Didact Gothic’, sans-serif;
+font-size: 15px;
+line-height: 1.7;
+-webkit-font-smoothing: antialiased;
+}
+
+.frame { min-height: 100vh; padding: 28px; }
+.frame-inner { border: 1px solid rgba(184,145,42,0.35); padding: 0; }
+
+.hero {
+text-align: center;
+padding: 52px 32px 40px;
+border-bottom: 1px solid rgba(184,145,42,0.25);
+}
+
+.hero::before {
+content: ‘’;
+display: block;
+height: 3px;
+background: linear-gradient(90deg, transparent, var(–gold), var(–gold-pale), var(–gold), transparent);
+margin-bottom: 40px;
+}
+
+.eyebrow {
+font-size: 10px;
+letter-spacing: 0.28em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 20px;
+}
+
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(32px, 7vw, 62px);
+font-weight: 300;
+line-height: 1.1;
+color: var(–parchment);
+margin-bottom: 8px;
+}
+
+.hero-title em { font-style: italic; color: var(–gold-pale); }
+
+.hero-sub {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 16px;
+font-style: italic;
+color: var(–stone);
+margin-top: 16px;
+margin-bottom: 28px;
+}
+
+.date-pill {
+display: inline-flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 8px 14px;
+border: 1px solid rgba(184,145,42,0.4);
+padding: 10px 22px;
+font-size: 11px;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+color: var(–gold-pale);
+}
+
+.content { max-width: 700px; margin: 0 auto; padding: 0 32px; }
+
+.section { padding: 44px 0; border-bottom: 1px solid rgba(184,145,42,0.12); }
+.section:last-child { border-bottom: none; }
+
+.section-label {
+font-size: 9px;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 18px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.section-label::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: rgba(184,145,42,0.2);
+}
+
+.section-heading {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(22px, 4vw, 30px);
+font-weight: 400;
+color: var(–parchment);
+margin-bottom: 16px;
+}
+
+.body-text {
+color: rgba(240,232,216,0.75);
+font-size: 14px;
+line-height: 1.85;
+}
+
+.body-text p + p { margin-top: 10px; }
+
+/* Timeline */
+.timeline { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 0; }
+
+.timeline-item {
+display: grid;
+grid-template-columns: 90px 1fr;
+gap: 16px;
+padding: 13px 0;
+border-bottom: 1px solid rgba(184,145,42,0.08);
+align-items: start;
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-time {
+font-size: 12px;
+letter-spacing: 0.06em;
+color: var(–gold);
+padding-top: 1px;
+}
+
+.timeline-desc {
+font-size: 14px;
+color: rgba(240,232,216,0.8);
+line-height: 1.5;
+}
+
+.timeline-desc strong {
+color: var(–parchment);
+font-weight: normal;
+}
+
+/* Room tables */
+.room-block { margin-top: 28px; }
+.room-block + .room-block { margin-top: 36px; }
+
+.room-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+font-weight: 400;
+color: var(–gold-pale);
+margin-bottom: 4px;
+}
+
+.room-note {
+font-size: 11px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–stone);
+margin-bottom: 14px;
+}
+
+.set-table { width: 100%; border-collapse: collapse; }
+
+.set-table th {
+font-size: 9px;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–gold);
+text-align: left;
+padding: 6px 10px;
+border-bottom: 1px solid rgba(184,145,42,0.25);
+}
+
+.set-table td {
+font-size: 13px;
+color: rgba(240,232,216,0.8);
+padding: 10px 10px;
+border-bottom: 1px solid rgba(184,145,42,0.07);
+line-height: 1.4;
+}
+
+.set-table tr:last-child td { border-bottom: none; }
+
+.set-table td:first-child { color: var(–gold-pale); font-size: 12px; white-space: nowrap; }
+
+.set-table td strong { color: var(–parchment); font-weight: normal; }
+
+/* Info box */
+.info-box {
+background: rgba(184,145,42,0.06);
+border: 1px solid rgba(184,145,42,0.18);
+padding: 20px 24px;
+margin-top: 20px;
+}
+
+.info-box p { font-size: 13.5px; color: rgba(240,232,216,0.75); line-height: 1.8; }
+.info-box p + p { margin-top: 8px; }
+
+/* Checklist */
+.checklist { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+.checklist li {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+font-size: 14px;
+color: rgba(240,232,216,0.8);
+line-height: 1.5;
+}
+
+.checklist li::before { content: ‘◈’; color: var(–gold); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
+
+/* Contacts */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+
+.contact-card {
+border: 1px solid rgba(184,145,42,0.15);
+padding: 14px 16px;
+}
+
+.contact-name { font-family: ‘Cormorant Garamond’, serif; font-size: 17px; color: var(–parchment); margin-bottom: 2px; }
+.contact-role { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(–stone); margin-bottom: 6px; }
+.contact-phone { font-size: 13px; color: var(–gold-pale); }
+
+.footer { text-align: center; padding: 36px 32px; border-top: 1px solid rgba(184,145,42,0.25); }
+
+.footer::before {
+content: ‘’;
+display: block;
+height: 3px;
+background: linear-gradient(90deg, transparent, var(–gold), var(–gold-pale), var(–gold), transparent);
+margin-bottom: 28px;
+}
+
+.footer-brand { font-family: ‘Cormorant Garamond’, serif; font-size: 13px; font-style: italic; color: var(–stone); }
+
+@media (max-width: 580px) {
+.frame { padding: 12px; }
+.hero { padding: 36px 20px 32px; }
+.content { padding: 0 20px; }
+.section { padding: 36px 0; }
+.contact-grid { grid-template-columns: 1fr; }
+.timeline-item { grid-template-columns: 80px 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="frame">
+<div class="frame-inner">
+
+  <header class="hero">
+    <p class="eyebrow">In Session Global × Legion of Honor</p>
+    <h1 class="hero-title">Late Night Editions<br><em>The Etruscans</em></h1>
+    <p class="hero-sub">DJ Arrival &amp; Run of Show</p>
+    <div class="date-pill">
+      <span>Thursday, June 11</span>
+      <span>·</span>
+      <span>6 – 10 pm</span>
+      <span>·</span>
+      <span>Legion of Honor</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+```
+<!-- INTRO -->
+<section class="section">
+  <p class="section-label">Overview</p>
+  <div class="body-text">
+    <p>Thanks for being part of the night. Below is everything you need to arrive, load in, and perform. Please read in full before Thursday.</p>
+    <p>Steven will be on-site setting up from 3 pm. You're welcome to arrive anytime between 5 and 6 pm. Music starts at 6 pm sharp in all three rooms.</p>
+  </div>
+</section>
+
+<!-- ARRIVAL & LOAD IN -->
+<section class="section">
+  <p class="section-label">Arrival &amp; Load In</p>
+  <h2 class="section-heading">Getting There</h2>
+  <div class="info-box">
+    <p>Enter Lincoln Park at <strong>34th Avenue and Clement</strong>. Continue straight past the front of the museum and make a <strong>LEFT onto El Camino de Mar</strong>. The Loading Dock Gate is on the left — ring the buzzer for access.</p>
+    <p>All vendors and DJs must check in with security at the Loading Dock before proceeding. Security check-in is inside the hallway at the loading dock — buzz the door if it's not open.</p>
+    <p>Do not enter via the Terrace Glass Doors or Court of Honor Gate without checking in first.</p>
+    <p>Once unloaded, re-park on El Camino de Mar (free, unmetered). No vehicles may remain at the dock or terrace driveway.</p>
+  </div>
+
+  <ul class="checklist" style="margin-top:20px;">
+    <li>Arrive between 5 – 6 pm (Steven on-site from 3 pm)</li>
+    <li>Check in at Loading Dock security before anything else</li>
+    <li>Sound check 5 – 5:45 pm (ideal but not mandatory)</li>
+    <li>Music starts at 6 pm in all three rooms</li>
+    <li>Re-park after unloading — no vehicles at dock</li>
+  </ul>
+</section>
+
+<!-- RUN OF SHOW -->
+<section class="section">
+  <p class="section-label">Production Timeline</p>
+  <h2 class="section-heading">Run of Show</h2>
+  <ul class="timeline">
+    <li class="timeline-item"><span class="timeline-time">3:00 pm</span><span class="timeline-desc">Steven on-site / Setup begins — Gallery 10 + Court of Honor</span></li>
+    <li class="timeline-item"><span class="timeline-time">5:00 – 5:45 pm</span><span class="timeline-desc"><strong>Sound check</strong> (ideal, not mandatory)</span></li>
+    <li class="timeline-item"><span class="timeline-time">5:45 pm</span><span class="timeline-desc">Guest ready</span></li>
+    <li class="timeline-item"><span class="timeline-time">6:00 pm</span><span class="timeline-desc"><strong>Doors open — music starts in all three rooms</strong></span></li>
+    <li class="timeline-item"><span class="timeline-time">9:40 pm</span><span class="timeline-desc">Last song</span></li>
+    <li class="timeline-item"><span class="timeline-time">9:45 pm</span><span class="timeline-desc">Stop music / Lights up</span></li>
+    <li class="timeline-item"><span class="timeline-time">10:00 pm</span><span class="timeline-desc">All guests off-site</span></li>
+    <li class="timeline-item"><span class="timeline-time">11:00 pm</span><span class="timeline-desc">Court of Honor clear</span></li>
+    <li class="timeline-item"><span class="timeline-time">12:30 am</span><span class="timeline-desc">All vendors off-site</span></li>
+  </ul>
+</section>
+
+<!-- DJ SCHEDULES -->
+<section class="section">
+  <p class="section-label">DJ Schedules</p>
+  <h2 class="section-heading">Your Set Times</h2>
+
+  <!-- Court of Honor -->
+  <div class="room-block">
+    <p class="room-name">Court of Honor</p>
+    <p class="room-note">Outside · AZ · 6:00 – 9:30 pm</p>
+    <table class="set-table">
+      <thead>
+        <tr><th>Time</th><th>DJ</th><th>Set</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>6:00 – 6:40</td><td><strong>Amal</strong></td><td>40 min</td></tr>
+        <tr><td>6:40 – 7:20</td><td><strong>Lowkeyy J</strong></td><td>40 min</td></tr>
+        <tr><td>7:20 – 8:00</td><td><strong>Katjabba</strong></td><td>40 min</td></tr>
+        <tr><td>8:00 – 8:40</td><td><strong>J Espinosa</strong></td><td>40 min</td></tr>
+        <tr><td>8:40 – 9:15</td><td><strong>Thurston</strong></td><td>35 min</td></tr>
+        <tr><td>9:15 – 9:30</td><td><strong>Snare</strong></td><td>15 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Inside Room -->
+  <div class="room-block">
+    <p class="room-name">Gallery 10</p>
+    <p class="room-note">Inside Room · Rev7 · 6:00 – 9:30 pm</p>
+    <table class="set-table">
+      <thead>
+        <tr><th>Time</th><th>DJ</th><th>Set</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>6:00 – 6:40</td><td><strong>Ross Hog</strong></td><td>40 min</td></tr>
+        <tr><td>6:40 – 7:20</td><td><strong>Tigermom Toy</strong></td><td>40 min</td></tr>
+        <tr><td>7:20 – 8:00</td><td><strong>Cutso</strong></td><td>40 min</td></tr>
+        <tr><td>8:00 – 8:20</td><td><strong>Flow</strong></td><td>20 min — Bboy Battles</td></tr>
+        <tr><td>8:20 – 8:30</td><td><strong>Quantum</strong></td><td>10 min — Bboy Finals</td></tr>
+        <tr><td>8:30 – 9:10</td><td><strong>Proof</strong></td><td>40 min — Closer</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Arrival Lounge -->
+  <div class="room-block">
+    <p class="room-name">Arrival Lounge</p>
+    <p class="room-note">6:00 – 9:00 pm</p>
+    <table class="set-table">
+      <thead>
+        <tr><th>Time</th><th>DJ</th><th>Set</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>6:00 – 7:00</td><td><strong>Dre</strong></td><td>60 min</td></tr>
+        <tr><td>7:00 – 8:00</td><td><strong>Xjeezy</strong></td><td>60 min</td></tr>
+        <tr><td>8:00 – 8:30</td><td><strong>Baelut</strong></td><td>30 min</td></tr>
+        <tr><td>8:30 – 9:00</td><td><strong>Namdosean</strong></td><td>30 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="section">
+  <p class="section-label">Event Day Contacts</p>
+  <h2 class="section-heading">Who to Reach</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <p class="contact-name">Steven Sanchez</p>
+      <p class="contact-role">In Session / Producer</p>
+      <p class="contact-phone">(408) 217-3811</p>
+    </div>
+    <div class="contact-card">
+      <p class="contact-name">Rochelle</p>
+      <p class="contact-role">In Session / Producer</p>
+      <p class="contact-phone">+1 (408) 707-8710</p>
+    </div>
+  </div>
+</section>
+
+<!-- REMINDERS -->
+<section class="section">
+  <p class="section-label">Reminders</p>
+  <ul class="checklist">
+    <li>Tag <strong>@legionofhonor</strong> and <strong>@insessionglobal</strong> if you post from the event</li>
+    <li>Guests must be 21+ with valid ID</li>
+    <li>This is a ticketed public event — amplified music throughout</li>
+    <li>Hard stop on music at 9:40 pm — please plan your set accordingly</li>
+    <li>Friends asking about the guest list or tickets? Direct them to use code <strong>insessionedition</strong> at checkout for 20% off — <a href="https://www.famsf.org/events/late-night-editions-etruscans" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,145,42,0.4);">get tickets here →</a></li>
+  </ul>
+</section>
+```
+
+  </div>
+
+  <footer class="footer">
+    <p class="footer-brand">In Session Global — Late Night Editions · June 11, 2026</p>
+  </footer>
+
+</div>
+</div>
+
+</body>
+</html>
