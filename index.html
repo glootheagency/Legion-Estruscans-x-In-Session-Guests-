@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Late Night Editions: The Etruscans — Legion of Honor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #1a1510;
+    --parchment: #f0e8d8;
+    --gold:      #b8912a;
+    --gold-pale: #d4ae5c;
+    --stone:     #7c6e5e;
+    --rust:      #8b3a2a;
+    --cream:     #faf6ee;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .frame { min-height: 100vh; padding: 28px; }
+  .frame-inner { border: 1px solid rgba(184,145,42,0.35); min-height: calc(100vh - 56px); padding: 0; }
+
+  .hero {
+    text-align: center;
+    padding: 64px 40px 48px;
+    border-bottom: 1px solid rgba(184,145,42,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-pale), var(--gold), transparent);
+    margin-bottom: 48px;
+  }
+
+  .eyebrow {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 8vw, 82px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--parchment);
+    margin-bottom: 10px;
+  }
+
+  .hero-title em { font-style: italic; color: var(--gold-pale); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--stone);
+    letter-spacing: 0.04em;
+    margin-top: 20px;
+    margin-bottom: 36px;
+  }
+
+  .medallion { width: 80px; height: 80px; margin: 0 auto 40px; position: relative; }
+  .medallion svg { width: 100%; height: 100%; }
+
+  .date-pill {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+    align-items: center;
+    border: 1px solid rgba(184,145,42,0.4);
+    padding: 12px 24px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-pale);
+  }
+
+  .content { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+
+  .section { padding: 52px 0; border-bottom: 1px solid rgba(184,145,42,0.12); }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(184,145,42,0.2);
+  }
+
+  .section-body { color: rgba(240,232,216,0.75); font-size: 14.5px; line-height: 1.8; }
+  .section-body p + p { margin-top: 12px; }
+
+  .dress-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--gold-pale);
+    border-left: 2px solid var(--gold);
+    padding-left: 24px;
+    margin-top: 8px;
+  }
+
+  .checklist { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 14px;
+    color: rgba(240,232,216,0.8);
+    line-height: 1.5;
+  }
+
+  .checklist li::before { content: '◈'; color: var(--gold); font-size: 11px; margin-top: 3px; flex-shrink: 0; }
+
+  .program { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 0; }
+
+  .program-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(184,145,42,0.1);
+    align-items: start;
+  }
+
+  .program-item:last-child { border-bottom: none; }
+  .program-icon { color: var(--gold); font-size: 16px; margin-top: 1px; text-align: center; }
+
+  .program-text { font-size: 14px; color: rgba(240,232,216,0.8); line-height: 1.6; }
+
+  .program-text strong {
+    display: block;
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+
+  .location-box {
+    background: rgba(184,145,42,0.06);
+    border: 1px solid rgba(184,145,42,0.18);
+    padding: 24px 28px;
+    margin-top: 20px;
+  }
+
+  .location-address { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--parchment); margin-bottom: 10px; }
+  .location-notes { font-size: 13px; color: var(--stone); line-height: 1.7; }
+
+  .location-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,145,42,0.4);
+    padding-bottom: 2px;
+  }
+
+  .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(184,145,42,0.25); }
+
+  .footer::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-pale), var(--gold), transparent);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--stone); letter-spacing: 0.06em; }
+
+  @media (max-width: 600px) {
+    .frame { padding: 14px; }
+    .hero { padding: 40px 20px 36px; }
+    .content { padding: 0 24px; }
+    .date-pill { gap: 16px; padding: 10px 18px; font-size: 11px; }
+    .section { padding: 40px 0; }
+    .footer { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+  <div class="frame-inner">
+
+    <header class="hero">
+      <p class="eyebrow">In Session Global × Legion of Honor</p>
+
+      <div class="medallion">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" stroke="#b8912a" stroke-width="1"/>
+          <circle cx="40" cy="40" r="30" stroke="#b8912a" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <g stroke="#b8912a" stroke-width="0.75" opacity="0.7">
+            <line x1="40" y1="10" x2="40" y2="70"/>
+            <line x1="10" y1="40" x2="70" y2="40"/>
+            <line x1="18.79" y1="18.79" x2="61.21" y2="61.21"/>
+            <line x1="61.21" y1="18.79" x2="18.79" y2="61.21"/>
+          </g>
+          <circle cx="40" cy="40" r="5" fill="#b8912a" opacity="0.9"/>
+          <circle cx="40" cy="40" r="2.5" fill="#1a1510"/>
+          <g stroke="#b8912a" stroke-width="1" opacity="0.5">
+            <line x1="40" y1="2" x2="40" y2="8"/>
+            <line x1="40" y1="72" x2="40" y2="78"/>
+            <line x1="2" y1="40" x2="8" y2="40"/>
+            <line x1="72" y1="40" x2="78" y2="40"/>
+          </g>
+        </svg>
+      </div>
+
+      <h1 class="hero-title">Late Night Editions<br><em>The Etruscans</em></h1>
+      <p class="hero-subtitle">An evening at the Legion of Honor</p>
+
+      <div class="date-pill">
+        <span>Thursday, June 11</span>
+        <span>·</span>
+        <span>6 – 10 pm</span>
+        <span>·</span>
+        <span>Legion of Honor</span>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <section class="section">
+        <p class="section-label">What to wear</p>
+        <p class="dress-quote">Metallic textures, sculptural silhouettes, radiant details — ancient glamour with bold forms and luminous accents.</p>
+        <div class="section-body" style="margin-top:18px;">
+          <p>Channel the Etruscans' exquisite artistry. Think timeless elegance, luminous accents, and a touch of gold.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">Where to go</p>
+        <div class="location-box">
+          <p class="location-address">Legion of Honor</p>
+          <p class="location-notes">
+            100 34th Ave, San Francisco<br><br>
+            Parking is very limited. We recommend public transit or rideshare.<br>
+            Please do not leave valuables in your car.
+          </p>
+          <a class="location-link" href="https://www.famsf.org/visit/getting-to-the-legion-of-honor?mc_cid=027792d585&mc_eid=416bcedf9f" target="_blank">
+            Parking &amp; transportation details →
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">What to know</p>
+        <ul class="checklist">
+          <li>Main Entrance doors open at 6 pm for check-in</li>
+          <li>Show your ticket — printed or mobile</li>
+          <li>Guests must be 21+ with valid ID</li>
+          <li>Coat check available on the lower level</li>
+          <li>This event features amplified live DJ music</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <p class="section-label">What's included · 6 – 9:30 pm</p>
+        <p class="section-body">Full lineup and event map available in the Bloomberg Connects guide — <a href="https://guides.bloombergconnects.org/en-US/guide/fineArtsMuseumOfSanFrancisco/exhibition/6c635de9-c13d-4718-9c83-4d1e725e29e3" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,145,42,0.4);">view the guide →</a></p>
+
+        <ul class="program">
+          <li class="program-item">
+            <div class="program-icon">♫</div>
+            <div class="program-text">
+              <strong>Live DJ Sets by In Session</strong>
+              Throughout the museum all night
+            </div>
+          </li>
+          <li class="program-item">
+            <div class="program-icon">◎</div>
+            <div class="program-text">
+              <strong>Styled Photo Experience</strong>
+              By Chloe Jackman Photography
+            </div>
+          </li>
+          <li class="program-item">
+            <div class="program-icon">◈</div>
+            <div class="program-text">
+              <strong>Fine Jewelry Pop-Up by FIAT LUX</strong>
+              Etruscan-inspired engraving, permanent jewelry, and a display of body piercings
+            </div>
+          </li>
+          <li class="program-item">
+            <div class="program-icon">▷</div>
+            <div class="program-text">
+              <strong>7 pm Film Screening: La Chimera (2023)</strong>
+              Gunn Theater
+            </div>
+          </li>
+          <li class="program-item">
+            <div class="program-icon">◻</div>
+            <div class="program-text">
+              <strong>Exhibition Access All Night</strong>
+              The Etruscans: From the Heart of Ancient Italy · Drawn to Venice · Ferlinghetti for San Francisco · permanent collection galleries
+            </div>
+          </li>
+          <li class="program-item">
+            <div class="program-icon">◇</div>
+            <div class="program-text">
+              <strong>Food, Drinks &amp; Cocktails</strong>
+              Off the Grid food trucks and bars · complimentary wine from Museion Winery, while supplies last
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <footer class="footer">
+      <p class="footer-brand">In Session Global — Late Night Editions</p>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
